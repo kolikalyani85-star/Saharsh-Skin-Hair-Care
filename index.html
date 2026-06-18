@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saharsh Skin & Hair Care – Dr. Saloni R. Dugad</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p1:#ff6eb4;--p2:#ff3d9a;--p3:#e91e8c;
+  --r1:#ff8fa3;--r2:#ff4d6d;
+  --v1:#c77dff;--v2:#9d4edd;--v3:#7b2d8b;
+  --g1:#f8bbd0;--g2:#fce4ec;--g3:#fff0f5;
+  --o1:#ffb347;--o2:#ff7043;
+  --teal:#26c6da;--teal2:#0097a7;
+  --gold:#f5a623;--gold2:#c17f24;
+  --mint:#a8edea;--mint2:#43c6ac;
+  --white:#fff;--off:#fefaff;
+  --dark:#1a0a2e;--dark2:#2d1b4e;--dark3:#3d2560;
+  --mid:#6b4fa0;--soft:#b39dce;
+  --txt:#1a0a2e;--txt2:#4a3060;--txt3:#8a7aaa;
+  --border:rgba(199,125,255,0.2);
+  --sp:0 24px 64px rgba(180,50,150,0.14);
+  --sc:0 8px 32px rgba(100,30,120,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--off);color:var(--txt);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:#fce4ec;}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--p2),var(--v2));border-radius:10px;}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:18px 6%;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,250,255,0.92);backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(199,125,255,.18);transition:all .4s;
+}
+nav.scrolled{padding:12px 6%;box-shadow:0 4px 30px rgba(180,50,150,.1);}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;
+  background:linear-gradient(135deg,var(--p2),var(--v2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-decoration:none;letter-spacing:.5px;display:flex;align-items:center;gap:8px;
+  line-height:1.1;
+}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--p1),var(--v1));display:inline-block;animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:.7;}}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.3px;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--p2),var(--v2));transform:scaleX(0);transition:transform .3s;border-radius:2px;}
+.nav-links a:hover{color:var(--p2);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;padding:12px 28px;border-radius:50px;text-decoration:none;font-size:.84rem;font-weight:700;box-shadow:0 6px 24px rgba(233,30,140,.35);transition:all .35s;letter-spacing:.3px;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(233,30,140,.45);}
+
+/* ═══ HAMBURGER ═══ */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  width:44px;height:44px;cursor:pointer;border:none;background:transparent;
+  border-radius:12px;gap:5px;padding:8px;
+  transition:background .3s;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-hamburger:hover{background:rgba(233,30,140,.08);}
+.ham-bar{
+  width:22px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--p2),var(--v2));
+  transition:all .35s cubic-bezier(.25,.8,.25,1);
+  transform-origin:center;
+}
+.nav-hamburger.open .ham-bar:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open .ham-bar:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open .ham-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ═══ MOBILE MENU OVERLAY ═══ */
+.mobile-menu{
+  position:fixed;top:0;left:0;right:0;bottom:0;z-index:490;
+  background:rgba(255,250,255,0.97);backdrop-filter:blur(28px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s cubic-bezier(.25,.8,.25,1);
+}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{
+  font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;
+  color:var(--txt);text-decoration:none;letter-spacing:.5px;
+  padding:10px 32px;border-radius:14px;
+  transition:all .25s;position:relative;
+}
+.mobile-menu a::after{
+  content:'';position:absolute;bottom:4px;left:32px;right:32px;height:2px;
+  background:linear-gradient(90deg,var(--p2),var(--v2));
+  transform:scaleX(0);transition:transform .3s;border-radius:2px;
+}
+.mobile-menu a:hover{color:var(--p2);}
+.mobile-menu a:hover::after{transform:scaleX(1);}
+.mobile-menu-cta{
+  margin-top:16px;
+  background:linear-gradient(135deg,var(--p2),var(--v2));
+  color:#fff !important;padding:16px 40px !important;
+  border-radius:50px !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:.95rem !important;font-weight:700 !important;
+  box-shadow:0 8px 28px rgba(233,30,140,.35);
+  letter-spacing:.5px !important;
+}
+.mobile-menu-cta::after{display:none !important;}
+.mobile-menu-decor{
+  position:absolute;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,110,180,.1),transparent 70%);
+}
+.mmb1{width:300px;height:300px;top:-80px;right:-80px;}
+.mmb2{width:250px;height:250px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(199,125,255,.1),transparent 70%);}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(155deg,#fff8fd 0%,#fdf0ff 30%,#f8eeff 55%,#fff0f8 80%,#ffeef5 100%);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  padding:120px 6% 90px;position:relative;overflow:hidden;
+}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid;pointer-events:none;animation:ring-spin linear infinite;}
+.hr1{width:700px;height:700px;border-color:rgba(233,30,140,.06);top:-200px;right:-200px;animation-duration:40s;}
+.hr2{width:500px;height:500px;border-color:rgba(157,78,221,.08);top:-100px;right:-100px;animation-duration:30s;animation-direction:reverse;}
+.hr3{width:900px;height:900px;border-color:rgba(233,30,140,.04);bottom:-300px;left:-200px;animation-duration:55s;}
+@keyframes ring-spin{to{transform:rotate(360deg);}}
+.hblob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.hb1{width:550px;height:550px;background:radial-gradient(circle,rgba(255,110,180,.22),transparent 70%);top:-100px;right:0;}
+.hb2{width:400px;height:400px;background:radial-gradient(circle,rgba(199,125,255,.18),transparent 70%);bottom:0;left:-50px;animation:blob2 9s ease-in-out infinite;}
+.hb3{width:250px;height:250px;background:radial-gradient(circle,rgba(255,179,71,.14),transparent 70%);top:35%;left:40%;animation:blob2 7s ease-in-out 2s infinite;}
+@keyframes blob2{0%,100%{transform:scale(1) translate(0,0);}50%{transform:scale(1.15) translate(15px,-15px);}}
+.petal{position:absolute;pointer-events:none;opacity:0;animation:petal-fall linear infinite;}
+@keyframes petal-fall{0%{opacity:0;transform:translateY(-20px) rotate(0deg);}10%{opacity:.6;}90%{opacity:.6;}100%{opacity:0;transform:translateY(100vh) rotate(360deg);}}
+.hero-left{position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(255,110,180,.12),rgba(199,125,255,.12));border:1px solid rgba(199,125,255,.3);padding:8px 22px;border-radius:50px;margin-bottom:28px;font-size:.73rem;font-weight:700;color:var(--v2);letter-spacing:2px;text-transform:uppercase;animation:fadeUp .7s ease both;}
+.eyebrow-gem{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--p1),var(--v1));}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.2vw,4.8rem);font-weight:700;line-height:1.1;color:var(--txt);margin-bottom:18px;animation:fadeUp .8s ease .1s both;}
+.h1-line2{display:block;position:relative;}
+.h1-grad{background:linear-gradient(135deg,var(--p2) 0%,var(--v2) 50%,var(--o1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:grad-shift 4s ease infinite;}
+@keyframes grad-shift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+.h1-underline{position:absolute;bottom:-6px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--p2),var(--v2),var(--o1));border-radius:4px;transform-origin:left;animation:underline-grow 1s ease .9s both;}
+@keyframes underline-grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+.hero-doc{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold2);font-style:italic;margin-bottom:20px;animation:fadeUp .8s ease .2s both;display:flex;align-items:center;gap:10px;}
+.hero-doc::before{content:'—';opacity:.5;}
+.hero-desc{font-size:.98rem;color:var(--txt3);line-height:1.85;max-width:460px;margin-bottom:38px;font-weight:400;animation:fadeUp .8s ease .3s both;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s ease .4s both;}
+.btn-primary{background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;padding:15px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 8px 28px rgba(233,30,140,.35);transition:all .35s;letter-spacing:.3px;position:relative;overflow:hidden;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--v2),var(--p2));opacity:0;transition:opacity .35s;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(233,30,140,.45);}
+.btn-primary:hover::before{opacity:1;}
+.btn-primary span{position:relative;z-index:1;}
+.btn-ghost{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,var(--p2),var(--v2)) border-box;color:var(--p2);padding:15px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.9rem;transition:all .3s;}
+.btn-ghost:hover{background:linear-gradient(135deg,rgba(255,110,180,.08),rgba(199,125,255,.08)) padding-box,linear-gradient(135deg,var(--p2),var(--v2)) border-box;}
+.hero-stats{display:flex;margin-top:52px;animation:fadeUp .8s ease .55s both;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border:1px solid rgba(199,125,255,.15);border-radius:20px;padding:18px 28px;width:fit-content;gap:32px;box-shadow:0 8px 32px rgba(160,50,180,.08);}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;background:linear-gradient(135deg,var(--p2),var(--v2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.stat-div{width:1px;background:linear-gradient(to bottom,transparent,rgba(199,125,255,.3),transparent);}
+.stat-label{font-size:.68rem;color:var(--txt3);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;font-weight:600;}
+.hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;animation:fadeRight .9s ease .2s both;}
+.hero-mosaic{width:440px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
+.hm-big{grid-column:span 2;height:240px;border-radius:28px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(180,50,150,.2);}
+.hm-sm{height:170px;border-radius:22px;overflow:hidden;position:relative;box-shadow:0 12px 36px rgba(180,50,150,.15);}
+.hm-big img,.hm-sm img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.hm-big:hover img,.hm-sm:hover img{transform:scale(1.07);}
+.hm-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(40,5,60,.55) 0%,transparent 60%);}
+.hm-label{position:absolute;bottom:14px;left:16px;right:16px;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;display:flex;align-items:center;gap:6px;}
+.hm-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--p1);flex-shrink:0;}
+.hf-card{position:absolute;background:rgba(255,255,255,.92);border-radius:18px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 36px rgba(160,50,180,.18);border:1px solid rgba(199,125,255,.2);backdrop-filter:blur(12px);animation:float 3.5s ease-in-out infinite;z-index:10;}
+.hf1{bottom:16px;left:-48px;}
+.hf2{top:24px;right:-48px;animation-delay:1.5s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.hf-icon{font-size:1.5rem;}
+.hf-text strong{display:block;font-size:.82rem;color:var(--txt);font-weight:700;}
+.hf-text span{font-size:.68rem;color:var(--txt3);}
+
+/* ═══ MARQUEE ═══ */
+.marquee-wrap{overflow:hidden;padding:0;background:linear-gradient(135deg,var(--p3) 0%,var(--v2) 40%,var(--p2) 70%,var(--o2) 100%);position:relative;}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--p3),transparent);}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--o2),transparent);}
+.marquee-inner{padding:14px 0;}
+.marquee-track{display:flex;width:max-content;animation:marquee 35s linear infinite;}
+.marquee-item{padding:0 24px;font-size:.76rem;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:24px;}
+.marquee-dot{width:4px;height:4px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ═══ SECTIONS ═══ */
+.section{padding:96px 6%;}
+.sec-head{text-align:center;margin-bottom:64px;}
+.sec-kicker{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;background:linear-gradient(135deg,var(--p2),var(--v2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:14px;}
+.sec-kicker::before,.sec-kicker::after{content:'✦';opacity:.6;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--txt);line-height:1.18;}
+.sec-title em{font-style:italic;background:linear-gradient(135deg,var(--p2),var(--v2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-sub{font-size:.95rem;color:var(--txt3);max-width:500px;margin:14px auto 0;line-height:1.8;}
+
+/* ═══ DOCTOR PROFILE ═══ */
+.doctor-section{background:#fff;padding:96px 6%;position:relative;overflow:hidden;}
+.doctor-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--p2),var(--v2),var(--o1));}
+.doc-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto;}
+.doc-photo-wrap{position:relative;}
+.doc-photo{width:100%;max-width:360px;border-radius:36px;overflow:hidden;box-shadow:0 32px 80px rgba(160,50,180,.22);position:relative;}
+.doc-photo img{width:100%;height:460px;object-fit:cover;object-position:center top;}
+.doc-photo-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;border-radius:24px;padding:18px 22px;text-align:center;box-shadow:0 12px 36px rgba(233,30,140,.35);}
+.doc-photo-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;line-height:1;}
+.doc-photo-badge span{font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+.doc-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--txt);margin-bottom:6px;}
+.doc-title{font-size:1rem;color:var(--gold2);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:20px;}
+.doc-bio{font-size:.92rem;color:var(--txt3);line-height:1.85;margin-bottom:24px;}
+.doc-creds{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+.doc-cred{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,110,180,.06),rgba(199,125,255,.06));border:1px solid rgba(199,125,255,.15);border-radius:14px;padding:14px 18px;}
+.doc-cred-icon{font-size:1.3rem;flex-shrink:0;}
+.doc-cred strong{display:block;font-size:.82rem;color:var(--txt);font-weight:700;}
+.doc-cred span{font-size:.75rem;color:var(--txt3);}
+.doc-specialties{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.doc-spec-tag{padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);}
+
+/* ═══ TREATMENTS ═══ */
+.treatments-section{background:linear-gradient(180deg,var(--off) 0%,#fdf4ff 50%,var(--off) 100%);position:relative;overflow:hidden;}
+.treatments-section::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(199,125,255,.07),transparent 70%);pointer-events:none;}
+.cat-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+.cat-tab{padding:10px 22px;border-radius:50px;cursor:pointer;background:#fff;font-family:'Jost',sans-serif;border:1.5px solid rgba(199,125,255,.25);color:var(--txt3);font-size:.82rem;font-weight:700;transition:all .3s;letter-spacing:.3px;box-shadow:0 2px 12px rgba(180,50,150,.06);}
+.cat-tab.active,.cat-tab:hover{background:linear-gradient(135deg,var(--p2),var(--v2));border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(233,30,140,.3);transform:translateY(-1px);}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px;}
+.t-card{background:#fff;border-radius:26px;overflow:hidden;box-shadow:var(--sc);transition:all .45s cubic-bezier(.25,.8,.25,1);border:1px solid rgba(199,125,255,.1);position:relative;}
+.t-card::after{content:'';position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(255,110,180,.04),rgba(199,125,255,.04));opacity:0;transition:opacity .4s;pointer-events:none;}
+.t-card:hover{transform:translateY(-10px);box-shadow:0 28px 70px rgba(180,50,150,.18);border-color:rgba(233,30,140,.25);}
+.t-card:hover::after{opacity:1;}
+.t-img{height:210px;overflow:hidden;position:relative;}
+.t-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.t-card:hover .t-img img{transform:scale(1.1);}
+.t-img-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(30,5,50,.6));}
+.t-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:20px;padding:5px 13px;font-size:.66rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;border:1px solid rgba(199,125,255,.2);}
+.t-cat-dot{position:absolute;top:14px;right:14px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.6);}
+.t-body{padding:22px 24px 26px;}
+.t-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.t-icon-box{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;transition:transform .3s;}
+.t-card:hover .t-icon-box{transform:rotate(8deg) scale(1.1);}
+.t-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--txt);line-height:1.2;}
+.t-marathi{font-size:.73rem;font-weight:700;margin-bottom:10px;letter-spacing:.3px;}
+.t-desc{font-size:.8rem;color:var(--txt3);line-height:1.7;}
+.t-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
+.t-tag{font-size:.63rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(199,125,255,.08);color:var(--v2);border:1px solid rgba(199,125,255,.18);}
+.t-footer{margin-top:14px;display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(199,125,255,.1);}
+.t-learn{font-size:.75rem;font-weight:700;color:var(--p2);text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap .3s;}
+.t-learn:hover{gap:8px;}
+.t-stars{color:var(--gold);font-size:.75rem;letter-spacing:1px;}
+
+/* ═══ HOW IT WORKS ═══ */
+.process-section{background:linear-gradient(135deg,#fff0f8 0%,#f5eeff 50%,#fff5fb 100%);padding:96px 6%;}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1100px;margin:0 auto;position:relative;}
+.process-steps::before{content:'';position:absolute;top:52px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--p2),var(--v2),var(--o1));z-index:0;}
+.ps-step{text-align:center;padding:0 20px;position:relative;z-index:1;}
+.ps-num{width:56px;height:56px;border-radius:50%;margin:0 auto 20px;background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(233,30,140,.3);border:3px solid #fff;}
+.ps-icon{font-size:1.8rem;margin-bottom:12px;}
+.ps-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--txt);margin-bottom:8px;}
+.ps-desc{font-size:.78rem;color:var(--txt3);line-height:1.65;}
+
+/* ═══ AYURVEDA ═══ */
+.ayurveda-section{background:linear-gradient(135deg,#fff8fe 0%,#f8f0ff 40%,#fff5fb 100%);border-top:1px solid rgba(199,125,255,.1);border-bottom:1px solid rgba(199,125,255,.1);position:relative;overflow:hidden;}
+.ay-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.ay-left p{font-size:.95rem;color:var(--txt3);line-height:1.85;margin-bottom:14px;}
+.ay-therapies{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.ay-card{background:#fff;border-radius:22px;overflow:hidden;border:1px solid rgba(199,125,255,.15);box-shadow:0 6px 24px rgba(160,50,180,.08);transition:all .35s;}
+.ay-card:hover{transform:translateY(-5px);box-shadow:var(--sp);}
+.ay-card-img{height:100px;overflow:hidden;}
+.ay-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.ay-card:hover .ay-card-img img{transform:scale(1.08);}
+.ay-card-body{padding:14px 16px 18px;}
+.ay-card h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:3px;}
+.ay-card .ay-m{font-size:.68rem;font-weight:700;color:var(--gold2);margin-bottom:7px;letter-spacing:.5px;}
+.ay-card p{font-size:.75rem;color:var(--txt3);line-height:1.55;}
+.ay-card .ay-benefits{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;}
+.ay-card .ay-benefit-tag{font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(245,166,35,.1);color:var(--gold2);border:1px solid rgba(245,166,35,.2);}
+.ay-right{position:relative;}
+.ay-main{height:440px;border-radius:36px;overflow:hidden;position:relative;box-shadow:0 32px 80px rgba(160,50,180,.22);}
+.ay-main img{width:100%;height:100%;object-fit:cover;}
+.ay-main-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(40,5,60,.7) 0%,rgba(40,5,60,.1) 50%,transparent 100%);}
+.ay-main-text{position:absolute;bottom:28px;left:28px;right:28px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:20px 24px;}
+.ay-om{font-size:2.2rem;line-height:1;margin-bottom:6px;}
+.ay-main-text h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:4px;}
+.ay-main-text p{font-size:.78rem;color:rgba(255,255,255,.7);}
+
+/* ═══ ANTI-AGING ═══ */
+.antiaging-section{background:#fff;}
+.ag-grid{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:22px;}
+.ag-card{border-radius:26px;overflow:hidden;position:relative;transition:all .4s;box-shadow:var(--sc);cursor:pointer;}
+.ag-card:hover{transform:translateY(-6px);box-shadow:0 28px 70px rgba(180,50,150,.18);}
+.ag-card.featured{grid-row:span 2;}
+.ag-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;}
+.ag-card.featured img{height:580px;}
+.ag-card:not(.featured) img{height:270px;}
+.ag-card:hover img{transform:scale(1.06);}
+.ag-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(30,5,55,.88) 0%,rgba(30,5,55,.3) 60%,transparent 100%);padding:30px 26px 26px;}
+.ag-pill{display:inline-block;margin-bottom:10px;background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;padding:4px 16px;border-radius:20px;font-size:.66rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;}
+.ag-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.ag-marathi{font-size:.73rem;color:rgba(255,200,230,.8);margin-bottom:10px;font-weight:600;}
+.ag-desc{font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.65;}
+.ag-points{margin-top:10px;list-style:none;display:flex;flex-direction:column;gap:4px;}
+.ag-points li{font-size:.72rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:6px;}
+.ag-points li::before{content:'✦';color:var(--p1);font-size:.55rem;}
+
+/* ═══ CONDITIONS ═══ */
+.conditions-section{background:linear-gradient(180deg,#fff 0%,#fdf4ff 100%);padding:96px 6%;}
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;max-width:1100px;margin:0 auto;}
+.cond-card{background:#fff;border-radius:20px;padding:22px 18px;border:1px solid rgba(199,125,255,.12);box-shadow:0 4px 20px rgba(160,50,180,.06);transition:all .3s;text-align:center;}
+.cond-card:hover{transform:translateY(-5px);box-shadow:var(--sp);border-color:rgba(233,30,140,.2);}
+.cond-icon{font-size:2rem;margin-bottom:10px;}
+.cond-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:5px;}
+.cond-desc{font-size:.72rem;color:var(--txt3);line-height:1.6;}
+
+/* ═══ BENEFITS ═══ */
+.benefits-section{background:linear-gradient(135deg,#fff0f8 0%,#f5eeff 50%,#fff5fb 100%);}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.ben-card{background:#fff;border-radius:26px;padding:36px 28px;text-align:center;border:1px solid rgba(199,125,255,.12);box-shadow:var(--sc);transition:all .4s;position:relative;overflow:hidden;}
+.ben-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--bar-grad,linear-gradient(90deg,var(--p2),var(--v2)));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.ben-card:hover::before{transform:scaleX(1);}
+.ben-card:hover{transform:translateY(-8px);box-shadow:var(--sp);}
+.ben-icon{width:72px;height:72px;border-radius:22px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:transform .3s;}
+.ben-card:hover .ben-icon{transform:scale(1.12) rotate(-5deg);}
+.ben-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--txt);margin-bottom:6px;}
+.ben-marathi{font-size:.72rem;font-weight:800;margin-bottom:12px;letter-spacing:.3px;}
+.ben-desc{font-size:.81rem;color:var(--txt3);line-height:1.7;}
+
+/* ═══ WHY US ═══ */
+.why-section{background:#fff;position:relative;overflow:hidden;}
+.why-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(199,125,255,.05),transparent 70%);pointer-events:none;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.why-card{text-align:center;padding:36px 20px;border-radius:24px;border:1px solid rgba(199,125,255,.12);background:#fff;transition:all .35s;box-shadow:0 4px 20px rgba(160,50,180,.06);position:relative;overflow:hidden;}
+.why-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--wbar,linear-gradient(90deg,var(--p2),var(--v2)));transform:scaleX(0);transition:transform .4s;}
+.why-card:hover::after{transform:scaleX(1);}
+.why-card:hover{border-color:rgba(233,30,140,.25);box-shadow:var(--sp);transform:translateY(-5px);}
+.why-icon-wrap{width:60px;height:60px;border-radius:18px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--txt);margin-bottom:8px;}
+.why-desc{font-size:.78rem;color:var(--txt3);line-height:1.65;}
+
+/* ═══ FAQ ═══ */
+.faq-section{padding:96px 6%;}
+.faq-wrap{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+.faq-item{background:#fff;border-radius:18px;overflow:hidden;border:1px solid rgba(199,125,255,.15);box-shadow:0 4px 20px rgba(160,50,180,.06);transition:all .3s;}
+.faq-item.open{border-color:rgba(233,30,140,.25);box-shadow:var(--sp);}
+.faq-q{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.9rem;font-weight:700;color:var(--txt);gap:16px;}
+.faq-icon{width:30px;height:30px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,rgba(233,30,140,.1),rgba(157,78,221,.1));display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--p2);transition:transform .3s;font-weight:300;}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:all .4s cubic-bezier(.25,.8,.25,1);}
+.faq-item.open .faq-a{padding:0 24px 20px;max-height:300px;}
+.faq-a p{font-size:.84rem;color:var(--txt3);line-height:1.8;}
+
+/* ═══ TESTIMONIALS ═══ */
+.test-section{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 50%,var(--dark3) 100%);position:relative;overflow:hidden;}
+.test-section::before{content:'✦';position:absolute;font-size:20rem;color:rgba(255,255,255,.02);top:50%;left:5%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;pointer-events:none;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.test-card{background:rgba(255,255,255,.05);border:1px solid rgba(199,125,255,.18);border-radius:24px;padding:30px 26px;backdrop-filter:blur(12px);transition:all .35s;}
+.test-card:hover{background:rgba(255,255,255,.08);border-color:rgba(233,30,140,.3);transform:translateY(-4px);}
+.test-stars{color:var(--gold);font-size:.85rem;letter-spacing:2px;margin-bottom:14px;}
+.test-text{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.75;font-style:italic;margin-bottom:18px;}
+.test-text::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--p1);opacity:.6;line-height:0;vertical-align:-.5rem;margin-right:4px;}
+.test-author{display:flex;align-items:center;gap:12px;}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--p2),var(--v2));display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif;border:2px solid rgba(255,255,255,.2);flex-shrink:0;}
+.test-name{font-size:.85rem;font-weight:700;color:#fff;}
+.test-treat{font-size:.7rem;color:var(--p1);letter-spacing:.5px;}
+
+/* ═══ CONTACT ═══ */
+.contact-section{background:linear-gradient(135deg,#fff8fe 0%,#f8f0ff 50%,#fff5fb 100%);border-top:1px solid rgba(199,125,255,.12);}
+.contact-grid{display:grid;grid-template-columns:1fr;max-width:800px;margin:0 auto;gap:40px;align-items:start;}
+.contact-info{text-align:center;}
+.contact-info h3{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;color:var(--txt);margin-bottom:12px;}
+.contact-info>p{font-size:.95rem;color:var(--txt3);line-height:1.8;margin-bottom:38px;}
+.cd-container{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left;margin-bottom:40px;}
+.cd{display:flex;align-items:flex-start;gap:14px;background:#fff;padding:20px;border-radius:20px;border:1px solid rgba(199,125,255,.15);box-shadow:0 6px 24px rgba(160,50,180,.04);}
+.cd-icon{width:46px;height:46px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 16px rgba(160,50,180,.12);}
+.cd-text strong{display:block;font-size:.69rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px;}
+.cd-text span,.cd-text a{font-size:.88rem;color:var(--txt);text-decoration:none;}
+.contact-actions{display:flex;justify-content:center;margin-top:10px;}
+.btn-call{background:linear-gradient(135deg,var(--p2),var(--v2));color:#fff;padding:18px 46px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;box-shadow:0 8px 28px rgba(233,30,140,.35);transition:all .35s;letter-spacing:.5px;display:inline-flex;align-items:center;gap:10px;}
+.btn-call:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(233,30,140,.45);}
+
+/* ═══ FLOATING WHATSAPP ═══ */
+.whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background-color:#25d366;color:#fff;border-radius:50px;text-align:center;font-size:30px;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:999;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s ease;}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.4);}
+.whatsapp-float::before{content:'';position:absolute;width:100%;height:100%;background-color:#25d366;border-radius:50%;z-index:-1;opacity:.4;animation:wa-pulse 2s infinite;}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.4;}100%{transform:scale(1.4);opacity:0;}}
+
+/* ═══ FOOTER ═══ */
+footer{background:linear-gradient(145deg,#0e0520,#1a0a2e,#220d3a);padding:56px 6% 28px;text-align:center;border-top:1px solid rgba(199,125,255,.12);}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--p1),var(--v1),var(--o1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;}
+.foot-tag{font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:36px;letter-spacing:.5px;}
+.foot-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.foot-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.8rem;font-weight:600;transition:color .3s;}
+.foot-links a:hover{color:var(--p1);}
+.foot-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(199,125,255,.15),transparent);margin-bottom:20px;}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.2);}
+.foot-heart{color:var(--p1);}
+
+/* ═══ REVEAL ═══ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(40px);}to{opacity:1;transform:translateX(0);}}
+
+/* ═══ TABLET ═══ */
+@media(max-width:960px){
+  nav{padding:16px 5%;}
+  nav.scrolled{padding:12px 5%;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;padding:100px 5% 60px;}
+  .hero-right{display:none;}
+  .ay-grid,.contact-grid,.doc-grid{grid-template-columns:1fr;gap:40px;}
+  .ag-grid{grid-template-columns:1fr;}
+  .ag-card.featured img{height:280px;}
+  .ag-card:not(.featured) img{height:220px;}
+  .ben-grid,.why-grid{grid-template-columns:1fr 1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr 1fr;gap:40px;}
+  .process-steps::before{display:none;}
+}
+
+/* ═══ MOBILE ═══ */
+@media(max-width:600px){
+  nav{padding:14px 4%;}
+  nav.scrolled{padding:10px 4%;}
+  .nav-logo{font-size:1.1rem;}
+  .ben-grid,.why-grid,.test-grid{grid-template-columns:1fr;}
+  .t-grid{grid-template-columns:1fr;}
+  .ay-therapies{grid-template-columns:1fr;}
+  .hero-stats{flex-direction:column;gap:16px;}
+  .process-steps{grid-template-columns:1fr;}
+  .cond-grid{grid-template-columns:1fr 1fr;}
+  .cd-container{grid-template-columns:1fr;}
+  .whatsapp-float{bottom:20px;right:20px;width:54px;height:54px;font-size:26px;}
+  .mobile-menu a{font-size:1.6rem;}
+}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/917972855142" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.479 4.86 1.48 5.385.002 9.774-4.383 9.777-9.769.002-2.61-1.002-5.064-2.83-6.894-1.828-1.83-4.283-2.834-6.892-2.835-5.387 0-9.778 4.386-9.78 9.774-.001 1.71.463 3.336 1.371 4.748L1.992 22.1l4.655-1.946zm13.14-5.334c-.213-.107-1.263-.624-1.458-.695-.195-.072-.338-.107-.481.108-.142.214-.551.695-.676.837-.124.143-.249.161-.462.054-.213-.107-.9-.332-1.714-1.06-.633-.565-1.061-1.263-1.185-1.477-.125-.213-.013-.329.093-.435.097-.095.214-.249.321-.373.107-.125.143-.214.214-.356.071-.143.035-.268-.018-.374-.053-.107-.481-1.157-.66-1.585-.173-.417-.347-.359-.481-.359-.124-.001-.266-.001-.408-.001-.143 0-.374.054-.57.268-.195.214-.747.73-1.747.73-1 .001-1.964-.521-2.071-.666-.107-.143-1.936-2.573-1.936-4.909 0-2.336 1.21-3.483 1.637-3.946.427-.463.854-.57.143-.57h1.031c.142 0 .374.054.569.268.196.214.747.73.747 1.78 0 1.051-.765 2.066-.872 2.21-.107.143-1.506 2.3-3.649 3.226-.51.221-.908.353-1.22.452-.513.163-.98.14-1.349.085-.412-.061-1.263-.516-1.44-.1017-.178-.5-.178-.927 0-1.031l.143-.214c.213-.32.482-.695.534-.784.054-.089.027-.166-.01-.24z"/></svg>
+</a>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-decor mmb1"></div>
+  <div class="mobile-menu-decor mmb2"></div>
+  <a href="#doctor" onclick="closeMobileMenu()">Dr. Saloni</a>
+  <a href="#treatments" onclick="closeMobileMenu()">Treatments</a>
+  <a href="#ayurveda" onclick="closeMobileMenu()">Ayurveda</a>
+  <a href="#antiaging" onclick="closeMobileMenu()">Anti-Aging</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="tel:7972855142" class="mobile-menu-cta" onclick="closeMobileMenu()">📞 Book Free Consultation</a>
+</div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    <span>
+      <span style="-webkit-text-fill-color:#4285F4;color:#4285F4;">S</span><span style="-webkit-text-fill-color:#EA4335;color:#EA4335;">a</span><span style="-webkit-text-fill-color:#FBBC05;color:#FBBC05;">h</span><span style="-webkit-text-fill-color:#4285F4;color:#4285F4;">a</span><span style="-webkit-text-fill-color:#34A853;color:#34A853;">r</span><span style="-webkit-text-fill-color:#EA4335;color:#EA4335;">s</span><span style="-webkit-text-fill-color:#EA4335;color:#EA4335;">h</span>
+      <span style="font-size:.7em;font-weight:700;letter-spacing:.2px;"> · <span style="-webkit-text-fill-color:#4285F4;color:#4285F4;">S</span><span style="-webkit-text-fill-color:#EA4335;color:#EA4335;">k</span><span style="-webkit-text-fill-color:#FBBC05;color:#FBBC05;">i</span><span style="-webkit-text-fill-color:#4285F4;color:#4285F4;">n</span> <span style="-webkit-text-fill-color:#34A853;color:#34A853;">&amp;</span> <span style="-webkit-text-fill-color:#EA4335;color:#EA4335;">H</span><span style="-webkit-text-fill-color:#4285F4;color:#4285F4;">a</span><span style="-webkit-text-fill-color:#FBBC05;color:#FBBC05;">i</span><span style="-webkit-text-fill-color:#34A853;color:#34A853;">r</span> <span style="-webkit-text-fill-color:#EA4335;color:#EA4335;">C</span><span style="-webkit-text-fill-color:#4285F4;color:#4285F4;">a</span><span style="-webkit-text-fill-color:#FBBC05;color:#FBBC05;">r</span><span style="-webkit-text-fill-color:#34A853;color:#34A853;">e</span></span>
+    </span>
+  </a>
+  
+  <ul class="nav-links">
+    <li><a href="#doctor">Dr. Saloni</a></li>
+    <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#ayurveda">Ayurveda</a></li>
+    <li><a href="#antiaging">Anti-Aging</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span class="ham-bar"></span>
+    <span class="ham-bar"></span>
+    <span class="ham-bar"></span>
+  </button>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-ring hr1"></div>
+  <div class="hero-ring hr2"></div>
+  <div class="hero-ring hr3"></div>
+  <div class="hblob hb1"></div>
+  <div class="hblob hb2"></div>
+  <div class="hblob hb3"></div>
+  <div id="petals"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="eyebrow-gem"></span> B.A.M.S · FMAC · Aesthetic Expert</div>
+    <h1>Your Skin<br><span class="h1-line2"><span class="h1-grad">Deserves the Best</span><span class="h1-underline"></span></span></h1>
+    <div class="hero-doc">Dr. Saloni R. Dugad</div>
+    <p class="hero-desc">Where Ayurvedic wisdom meets advanced aesthetic science. Personalised skin, hair &amp; wellness treatments crafted uniquely for you — in the heart of Maharashtra.</p>
+    <div class="hero-actions">
+      <a href="tel:7972855142" class="btn-primary"><span>✦ Book Free Consultation</span></a>
+      <a href="#treatments" class="btn-ghost">Explore Treatments</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Happy Patients</div></div>
+      <div class="stat-div"></div>
+      <div class="stat-item"><div class="stat-num">13+</div><div class="stat-label">Treatments</div></div>
+      <div class="stat-div"></div>
+      <div class="stat-item"><div class="stat-num">5 ★</div><div class="stat-label">Patient Rating</div></div>
+      <div class="stat-div"></div>
+      <div class="stat-item"></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="position:relative;width:440px;">
+      <div class="hero-mosaic">
+        <div class="hm-big">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop" alt="Facial">
+          <div class="hm-overlay"></div>
+          <div class="hm-label">Advanced Skin Care</div>
+        </div>
+        <div class="hm-sm">
+          <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&auto=format&fit=crop" alt="Laser">
+          <div class="hm-overlay"></div>
+          <div class="hm-label">Laser Therapy</div>
+        </div>
+        <div class="hm-sm">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&auto=format&fit=crop" alt="Ayurveda">
+          <div class="hm-overlay"></div>
+          <div class="hm-label">Ayurveda</div>
+        </div>
+      </div>
+      <div class="hf-card hf1"><span class="hf-icon">🌿</span><div class="hf-text"><strong>Panchakarma</strong><span>Certified Specialist</span></div></div>
+      <div class="hf-card hf2"><span class="hf-icon">⚡</span><div class="hf-text"><strong>Laser Expert</strong><span>Advanced Technology</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-inner"><div class="marquee-track" id="marqueeTrack"></div></div>
+</div>
+
+<section class="doctor-section" id="doctor">
+  <div class="doc-grid">
+    <div class="doc-photo-wrap reveal">
+      <div class="doc-photo">
+        <img src="./img/Dr.Saloni.jpeg" alt="Dr. Saloni R. Dugad">
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="sec-kicker" style="display:inline-flex;margin-bottom:14px;">Meet Your Doctor</div>
+      <h2 class="doc-info" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--txt);margin-bottom:6px;">Dr. Saloni R. Dugad</h2>
+      <p class="doc-title" style="font-size:1rem;color:var(--gold2);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:20px;">B.A.M.S · FMAC · Aesthetic Cosmetologist · Ayurveda Specialist</p>
+      <p class="doc-bio" style="font-size:.92rem;color:var(--txt3);line-height:1.85;margin-bottom:24px;">Dr. Saloni R. Dugad is a qualified Ayurvedic physician and certified aesthetic cosmetologist with specialised training in laser medicine, anti-aging therapies and Panchakarma. With a deep commitment to holistic well-being, she combines the science of modern dermatology with the ancient wisdom of Ayurveda to deliver treatments that are safe, effective and deeply personalised.</p>
+      <p class="doc-bio" style="font-size:.92rem;color:var(--txt3);line-height:1.85;margin-bottom:24px;">Her unique approach begins with Nadi Parikshan (pulse diagnosis) to understand your body's constitution, ensuring that every treatment plan — from laser to Panchakarma — is designed specifically for your needs and goals.</p>
+      <div class="doc-creds" style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+        <div class="doc-cred" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,110,180,.06),rgba(199,125,255,.06));border:1px solid rgba(199,125,255,.15);border-radius:14px;padding:14px 18px;">
+          <span class="doc-cred-icon">🎓</span>
+          <div><strong style="display:block;font-size:.82rem;color:var(--txt);font-weight:700;">B.A.M.S — Bachelor of Ayurvedic Medicine &amp; Surgery</strong><span style="font-size:.75rem;color:var(--txt3);">Comprehensive Ayurvedic medical training covering classical &amp; modern medicine</span></div>
+        </div>
+        <div class="doc-cred" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,110,180,.06),rgba(199,125,255,.06));border:1px solid rgba(199,125,255,.15);border-radius:14px;padding:14px 18px;">                            
+          <span class="doc-cred-icon">✦</span>
+          <div><strong style="display:block;font-size:.82rem;color:var(--txt);font-weight:700;">FMAC — Fellow in Medical Aesthetic &amp; Cosmetology</strong><span style="font-size:.75rem;color:var(--txt3);">Advanced fellowship covering laser treatments, chemical peels, fillers &amp; aesthetic procedures</span></div>
+        </div>
+        <div class="doc-cred" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,110,180,.06),rgba(199,125,255,.06));border:1px solid rgba(199,125,255,.15);border-radius:14px;padding:14px 18px;">
+          <span class="doc-cred-icon">🌿</span>
+          <div><strong style="display:block;font-size:.82rem;color:var(--txt);font-weight:700;">Panchakarma &amp; Nadi Parikshan Specialist</strong><span style="font-size:.75rem;color:var(--txt3);">Certified in classical Panchakarma detox therapies and Ayurvedic pulse diagnosis</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);">Laser Medicine</span>
+        <span style="padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);">Aesthetic Cosmetology</span>
+        <span style="padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);">PRP &amp; GFC Therapy</span>
+        <span style="padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);">Panchakarma</span>
+        <span style="padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);">Anti-Aging</span>
+        <span style="padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:700;background:linear-gradient(135deg,rgba(233,30,140,.08),rgba(157,78,221,.08));border:1px solid rgba(199,125,255,.2);color:var(--v2);">Nadi Parikshan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Your Journey</div>
+    <h2 class="sec-title">How It <em>Works</em></h2>
+    <p class="sec-sub">A simple, caring process from your first visit to your lasting results.</p>
+  </div>
+  <div class="process-steps">
+    <div class="ps-step reveal">
+      <div class="ps-num">1</div>
+      <div class="ps-icon">📋</div>
+      <div class="ps-title">Free Consultation</div>
+      <p class="ps-desc">Book a free 30-minute consultation with Dr. Saloni. Share your skin concerns, goals and medical history in a relaxed, private setting.</p>
+    </div>
+    <div class="ps-step reveal" style="transition-delay:.1s">
+      <div class="ps-num">2</div>
+      <div class="ps-icon">🔬</div>
+      <div class="ps-title">Skin Analysis</div>
+      <p class="ps-desc">Advanced skin analysis and Nadi Parikshan (Ayurvedic pulse diagnosis) to precisely understand your skin type, constitution and underlying concerns.</p>
+    </div>
+    <div class="ps-step reveal" style="transition-delay:.2s">
+      <div class="ps-num">3</div>
+      <div class="ps-icon">📝</div>
+      <div class="ps-title">Custom Treatment Plan</div>
+      <p class="ps-desc">Dr. Saloni designs a fully personalised treatment protocol — combining modern aesthetics and Ayurveda — tailored to your unique needs and lifestyle.</p>
+    </div>
+    <div class="ps-step reveal" style="transition-delay:.3s">
+      <div class="ps-num">4</div>
+      <div class="ps-icon">✨</div>
+      <div class="ps-title">Treatment &amp; Follow-up</div>
+      <p class="ps-desc">Begin your treatment with expert care. Regular follow-ups and adjustments ensure you achieve and maintain the best possible results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section treatments-section" id="treatments">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">त्वचेचे उपचार</div>
+    <h2 class="sec-title">Our <em>Signature</em> Treatments</h2>
+    <p class="sec-sub">Each treatment is personalised for your unique skin type, concerns and lifestyle goals.</p>
+  </div>
+  <div class="cat-tabs reveal" id="catTabs"></div>
+  <div class="t-grid" id="tGrid"></div>
+</section>
+
+<section class="conditions-section">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Skin Concerns</div>
+    <h2 class="sec-title">Conditions We <em>Treat</em></h2>
+    <p class="sec-sub">Comprehensive solutions for a wide range of skin and hair concerns.</p>
+  </div>
+  <div class="cond-grid">
+    <div class="cond-card reveal"><div class="cond-icon">🟤</div><div class="cond-name">Melasma &amp; Dark Spots</div><p class="cond-desc">Hormonal or sun-induced pigmentation treated with targeted peels and laser</p></div>
+    <div class="cond-card reveal" style="transition-delay:.05s"><div class="cond-icon">🔴</div><div class="cond-name">Acne &amp; Scars</div><p class="cond-desc">Active acne control and scar revision using chemical peels and PRP</p></div>
+    <div class="cond-card reveal" style="transition-delay:.1s"><div class="cond-icon">💧</div><div class="cond-name">Dry &amp; Dull Skin</div><p class="cond-desc">Deep hydration and radiance restoration through HydraFacial protocols</p></div>
+    <div class="cond-card reveal" style="transition-delay:.15s"><div class="cond-icon">💈</div><div class="cond-name">Unwanted Hair</div><p class="cond-desc">Permanent reduction on face, body and sensitive areas with safe laser tech</p></div>
+    <div class="cond-card reveal" style="transition-delay:.2s"><div class="cond-icon">🌀</div><div class="cond-name">Hair Fall &amp; Thinning</div><p class="cond-desc">GFC and PRP therapies to stimulate follicles and restore hair density</p></div>
+    <div class="cond-card reveal" style="transition-delay:.25s"><div class="cond-icon">❄️</div><div class="cond-name">Dandruff &amp; Scalp</div><p class="cond-desc">Root-cause treatment for chronic dandruff, itching and scalp inflammation</p></div>
+    <div class="cond-card reveal" style="transition-delay:.1s"><div class="cond-icon">🔷</div><div class="cond-name">Skin Laxity</div><p class="cond-desc">Collagen induction and tightening for sagging skin — surgical-grade results</p></div>
+    <div class="cond-card reveal" style="transition-delay:.15s"><div class="cond-icon">〰️</div><div class="cond-name">Fine Lines &amp; Wrinkles</div><p class="cond-desc">Multi-modal anti-aging treatments to smooth and restore youthful texture</p></div>
+    <div class="cond-card reveal" style="transition-delay:.2s"><div class="cond-icon">🎨</div><div class="cond-name">Unwanted Tattoos</div><p class="cond-desc">Safe multi-session laser removal for all ink colours and skin types</p></div>
+    <div class="cond-card reveal" style="transition-delay:.25s"><div class="cond-icon">🌿</div><div class="cond-name">Stress &amp; Fatigue</div><p class="cond-desc">Shirodhara and Panchakarma to deeply restore mental and physical energy</p></div>
+  </div>
+</section>
+
+<section class="section ayurveda-section" id="ayurveda">
+  <div class="ay-grid">
+    <div class="ay-left reveal">
+      <div class="sec-kicker" style="display:inline-flex;margin-bottom:14px;">पंचकर्म · Panchakarma</div>
+      <h2 class="sec-title" style="text-align:left;margin-bottom:18px;">Ancient <em>Healing</em><br>Rediscovered</h2>
+      <p>Panchakarma is a time-tested Ayurvedic purification system that rejuvenates body, mind and spirit at the cellular level. The word "Panchakarma" means five actions (Pancha = five, Karma = actions) — five therapeutic procedures that systematically eliminate accumulated toxins (ama) from the body.</p>
+      <p>Dr. Saloni blends classical Panchakarma with modern diagnostics for deeply personalised healing. Every consultation begins with <strong style="color:var(--gold2);">Nadi Parikshan</strong> — the ancient art of pulse diagnosis — to understand your unique Prakriti (constitution) and Vikriti (current imbalance).</p>
+      <div class="ay-therapies">
+        <div class="ay-card">
+          <div class="ay-card-img"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=300&auto=format&fit=crop" alt="Shirodhara"></div>
+          <div class="ay-card-body">
+            <h4>Shirodhara</h4>
+            <div class="ay-m">शिरोधारा</div>
+            <p>Warm herbal oil poured continuously on the forehead. Calms the nervous system, relieves chronic stress, insomnia and anxiety.</p>
+            <div class="ay-benefits"><span class="ay-benefit-tag">Stress Relief</span><span class="ay-benefit-tag">Insomnia</span><span class="ay-benefit-tag">Anxiety</span></div>
+          </div>
+        </div>
+        <div class="ay-card">
+          <div class="ay-card-img"><img src="./img/taparpam.jpg" alt="Tarpanam"></div>
+          <div class="ay-card-body">
+            <h4>Tarpanam</h4>
+            <div class="ay-m">तर्पणम</div>
+            <p>Medicated ghee retained around the eyes to nourish optic nerves, reduce dryness and improve clarity of vision.</p>
+            <div class="ay-benefits"><span class="ay-benefit-tag">Eye Dryness</span><span class="ay-benefit-tag">Screen Fatigue</span><span class="ay-benefit-tag">Vision</span></div>
+          </div>
+        </div>
+        <div class="ay-card">
+          <div class="ay-card-img"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=300&auto=format&fit=crop" alt="Panchakarma"></div>
+          <div class="ay-card-body">
+            <h4>Panchakarma</h4>
+            <div class="ay-m">पंचकर्म</div>
+            <p>Complete five-fold purification — Vaman, Virechan, Basti, Nasya &amp; Raktamokshan — to eliminate deep toxins and restore balance.</p>
+            <div class="ay-benefits"><span class="ay-benefit-tag">Detox</span><span class="ay-benefit-tag">Immunity</span><span class="ay-benefit-tag">Rejuvenation</span></div>
+          </div>
+        </div>
+        <div class="ay-card">
+          <div class="ay-card-img"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=300&auto=format&fit=crop" alt="Nadi Parikshan"></div>
+          <div class="ay-card-body">
+            <h4>Nadi Parikshan</h4>
+            <div class="ay-m">नाडी परीक्षण</div>
+            <p>Ancient pulse diagnosis to understand your Dosha balance (Vata, Pitta, Kapha) and design your personalised treatment protocol.</p>
+            <div class="ay-benefits"><span class="ay-benefit-tag">Diagnosis</span><span class="ay-benefit-tag">Dosha Balance</span><span class="ay-benefit-tag">Custom Plan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ay-right reveal" style="transition-delay:.2s">
+      <div class="ay-main">
+        <img src="https://images.unsplash.com/photo-1591343395902-1adcb454c4e2?w=600&auto=format&fit=crop" alt="Ayurveda wellness">
+        <div class="ay-main-overlay"></div>
+        <div class="ay-main-text">
+          <div class="ay-om">ॐ</div>
+          <h4>Holistic Wellness</h4>
+          <p>Rooted in 5000 years of Ayurvedic science, redefined for modern living.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section antiaging-section" id="antiaging">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Advanced Aesthetics</div>
+    <h2 class="sec-title">Anti-Aging &amp; <em>Rejuvenation</em></h2>
+    <p class="sec-sub">Science-backed treatments to restore youth, firmness and luminous glow — no surgery required.</p>
+  </div>
+  <div class="ag-grid">
+    <div class="ag-card featured reveal">
+      <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&auto=format&fit=crop" alt="Anti-Aging">
+      <div class="ag-overlay">
+        <span class="ag-pill">Most Popular</span>
+        <div class="ag-title">Wrinkle Reduction</div>
+        <div class="ag-marathi">सुरकुत्या कमी करणे</div>
+        <p class="ag-desc">Medical-grade technologies to smooth fine lines, restore volume and give a refreshed, youthful appearance with lasting results.</p>
+        <ul class="ag-points">
+          <li>Botulinum toxin &amp; dermal fillers for targeted smoothing</li>
+          <li>Visible results in as little as one session</li>
+          <li>Customised protocols for each face shape and concern</li>
+          <li>Safe, clinically proven, minimal downtime</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ag-card reveal" style="transition-delay:.1s">
+      <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&auto=format&fit=crop" alt="Collagen">
+      <div class="ag-overlay">
+        <span class="ag-pill">Advanced</span>
+        <div class="ag-title">Collagen Induction</div>
+        <div class="ag-marathi">कोलेजन उत्पादन वाढवणे</div>
+        <p class="ag-desc">Stimulate natural collagen through micro-needling, PRP and laser for long-lasting plumpness and firmness.</p>
+        <ul class="ag-points">
+          <li>Micro-needling RF for deep dermal remodelling</li>
+          <li>PRP boosts natural healing and collagen production</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ag-card reveal" style="transition-delay:.2s">
+      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&auto=format&fit=crop" alt="Skin Tightening">
+      <div class="ag-overlay">
+        <span class="ag-pill">Non-Surgical</span>
+        <div class="ag-title">Skin Tightening</div>
+        <div class="ag-marathi">त्वचेला घट्ट करणे</div>
+        <p class="ag-desc">Non-invasive firming to restore elasticity and lift sagging skin — zero downtime, instant visible improvement.</p>
+        <ul class="ag-points">
+          <li>HIFU and radiofrequency for deep tissue tightening</li>
+          <li>No needles, no surgery, no recovery time needed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section benefits-section">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Targeted Solutions</div>
+    <h2 class="sec-title">Transform Your <em>Skin</em></h2>
+    <p class="sec-sub">Our most sought-after aesthetic outcomes — delivered with expertise and care.</p>
+  </div>
+  <div class="ben-grid">
+    <div class="ben-card reveal" style="--bar-grad:linear-gradient(90deg,#ff3d9a,#ff6eb4)">
+      <div class="ben-icon" style="background:linear-gradient(135deg,#fce7f3,#fdf2f8);">✨</div>
+      <div class="ben-title">Wrinkle Reduction</div>
+      <div class="ben-marathi" style="color:#e91e8c;">सुरकुत्या कमी करणे</div>
+      <p class="ben-desc">Target fine lines and deep wrinkles with clinically proven treatments that restore smooth, youthful skin contours naturally. Results visible within days, lasting months to years.</p>
+    </div>
+    <div class="ben-card reveal" style="transition-delay:.1s;--bar-grad:linear-gradient(90deg,#9d4edd,#c77dff)">
+      <div class="ben-icon" style="background:linear-gradient(135deg,#f3e8ff,#fdf2f8);">💎</div>
+      <div class="ben-title">Collagen Boost</div>
+      <div class="ben-marathi" style="color:#9d4edd;">कोलेजन उत्पादन वाढवणे</div>
+      <p class="ben-desc">Stimulate your body's own collagen production for firm, plump and radiant skin that lasts well beyond the treatment. Suitable from age 25+ as a preventive measure.</p>
+    </div>
+    <div class="ben-card reveal" style="transition-delay:.2s;--bar-grad:linear-gradient(90deg,#ff7043,#ffb347)">
+      <div class="ben-icon" style="background:linear-gradient(135deg,#ffedd5,#fef3c7);">🌸</div>
+      <div class="ben-title">Skin Tightening</div>
+      <div class="ben-marathi" style="color:#ff7043;">त्वचेला घट्ट करणे</div>
+      <p class="ben-desc">Non-invasive tightening modalities to lift and firm skin, restoring tone and elasticity without any downtime. Ideal for post-pregnancy, post-weight-loss or age-related laxity.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section why-section" id="about">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Why Choose Saharsh</div>
+    <h2 class="sec-title">The <em>Saharsh</em> Difference</h2>
+    <p class="sec-sub">We don't just treat skin — we understand people. Here's what makes us different.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal" style="--wbar:linear-gradient(90deg,#ff3d9a,#ff6eb4)">
+      <div class="why-icon-wrap" style="background:linear-gradient(135deg,#fce7f3,#fdf2f8);">🎓</div>
+      <div class="why-title">Dual Qualified Expert</div>
+      <p class="why-desc">Dr. Saloni holds B.A.M.S &amp; FMAC credentials — rare dual expertise in both Ayurvedic medicine and modern aesthetic cosmetology for truly holistic care.</p>
+    </div>
+    <div class="why-card reveal" style="transition-delay:.1s;--wbar:linear-gradient(90deg,#9d4edd,#c77dff)">
+      <div class="why-icon-wrap" style="background:linear-gradient(135deg,#f3e8ff,#fdf2f8);">⚗️</div>
+      <div class="why-title">Science + Ayurveda</div>
+      <p class="why-desc">Unique fusion of cutting-edge laser and aesthetic technology with classical Ayurvedic principles — treating skin from the inside out for comprehensive, lasting results.</p>
+    </div>
+    <div class="why-card reveal" style="transition-delay:.2s;--wbar:linear-gradient(90deg,#26c6da,#43c6ac)">
+      <div class="why-icon-wrap" style="background:linear-gradient(135deg,#e0f7fa,#e0fdf4);">🛡️</div>
+      <div class="why-title">Safe &amp; Certified</div>
+      <p class="why-desc">All procedures use certified medical-grade equipment. Strict clinical safety protocols are followed for every patient. Full medical history review before any treatment.</p>
+    </div>
+    <div class="why-card reveal" style="transition-delay:.3s;--wbar:linear-gradient(90deg,#f5a623,#ff7043)">
+      <div class="why-icon-wrap" style="background:linear-gradient(135deg,#fef3c7,#ffedd5);">💛</div>
+      <div class="why-title">Fully Personalised</div>
+      <p class="why-desc">No two patients are alike. Every treatment plan is custom-designed after thorough skin analysis and Nadi Parikshan, ensuring the most effective approach for your unique needs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Common Questions</div>
+    <h2 class="sec-title">Frequently Asked <em>Questions</em></h2>
+    <p class="sec-sub">Answers to the most common questions about our treatments and clinic.</p>
+  </div>
+  <div class="faq-wrap" id="faqWrap"></div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">Get in Touch</div>
+    <h2 class="sec-title">Begin Your <em>Transformation</em></h2>
+    <p class="sec-sub">Connect with Dr. Saloni and start your personalised skin journey today.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Saharsh Skin &amp; Hair Care</h3>
+      <p>We'd love to be part of your wellness journey. Reach out through any channel below or click the button to connect instantly with our team.</p>
+      <div class="cd-container">
+        <div class="cd">
+          <div class="cd-icon" style="background:linear-gradient(135deg,#fce7f3,#fdf2f8);">📍</div>
+          <div class="cd-text"><strong style="color:#e91e8c;">Location</strong><span>Saharsh Skin &amp; Hair Care Clinic, Maharashtra</span></div>
+        </div>
+        <div class="cd">
+          <div class="cd-icon" style="background:linear-gradient(135deg,#f3e8ff,#fdf2f8);">📸</div>
+          <div class="cd-text"><strong style="color:#9d4edd;">Instagram</strong><a href="https://www.instagram.com/saharsh_skin_hair_care" target="_blank" style="color:#9d4edd;font-weight:700;">@saharsh_skin_hair_care ↗</a></div>
+        </div>
+        <div class="cd">
+          <div class="cd-icon" style="background:linear-gradient(135deg,#e0f7fa,#ccfbf1);">🗺️</div>
+          <div class="cd-text"><strong style="color:#0097a7;">Directions</strong><a href="https://maps.app.goo.gl/KT5S3vD58AurC2Jy7" target="_blank" style="color:#0097a7;font-weight:700;">View on Google Maps ↗</a></div>
+        </div>
+        <div class="cd">
+          <div class="cd-icon" style="background:linear-gradient(135deg,#fef3c7,#ffedd5);">🕐</div>
+          <div class="cd-text"><strong style="color:#c17f24;">Clinic Hours</strong><span>Mon – Sat: 10:00 AM – 7:00 PM<br>Sunday: By Appointment Only</span></div>
+        </div>
+      </div>
+      <div class="contact-actions">
+        <a href="tel:7972855142" class="btn-call">
+          <span>📞 Call Us Now: +91 79728 55142</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Saharsh ✦</div>
+  <div class="foot-tag">Skin · Hair · Ayurveda · Aesthetics — Maharashtra</div>
+  <div class="foot-links">
+    <a href="#doctor">Dr. Saloni</a>
+    <a href="#treatments">Treatments</a>
+    <a href="#ayurveda">Ayurveda</a>
+    <a href="#antiaging">Anti-Aging</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="https://maps.app.goo.gl/KT5S3vD58AurC2Jy7" target="_blank">Get Directions</a>
+    <a href="https://www.instagram.com/saharsh_skin_hair_care" target="_blank">Instagram</a>
+  </div>
+  <div class="foot-divider"></div>
+  <div class="foot-copy">© 2026 Saharsh Skin &amp; Hair Care · Dr. Saloni R. Dugad · B.A.M.S · FMAC · Made with <span class="foot-heart">♥</span> in Maharashtra</div>
+</footer>
+
+<script>
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>{ document.getElementById('nav').classList.toggle('scrolled',scrollY>50); });
+
+/* HAMBURGER / MOBILE MENU */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+function openMobileMenu(){
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  hamburger.setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu(){
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click',()=>{
+  if(mobileMenu.classList.contains('open')) closeMobileMenu();
+  else openMobileMenu();
+});
+mobileMenu.addEventListener('click',(e)=>{
+  if(e.target === mobileMenu) closeMobileMenu();
+});
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeMobileMenu(); });
+
+/* PETALS */
+const pc=document.getElementById('petals');
+pc.style.cssText='position:absolute;inset:0;pointer-events:none;overflow:hidden;';
+['🌸','🌺','✿','❀','⁕'].forEach(p=>{
+  for(let j=0;j<4;j++){
+    const el=document.createElement('div');
+    el.className='petal';el.textContent=p;
+    const sz=Math.random()*16+10;
+    el.style.cssText=`left:${Math.random()*100}%;font-size:${sz}px;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;`;
+    pc.appendChild(el);
+  }
+});
+
+/* MARQUEE */
+const mItems=['Chemical Peels','Laser Hair Reduction','HydraFacial','PRP & GFC Therapy','Panchakarma','Shirodhara · शिरोधारा','Anti-Aging','Tattoo Removal','Pigmentation Treatment','Tarpanam · तर्पणम','Wrinkle Reduction · सुरकुत्या','Collagen Induction · कोलेजन','Skin Tightening · त्वचेला घट्ट करणे','Dandruff Treatment'];
+document.getElementById('marqueeTrack').innerHTML=(mItems.concat(mItems)).map(t=>`<span class="marquee-item">${t}<span class="marquee-dot"></span></span>`).join('');
+
+/* TREATMENTS */
+const T=[
+  {cat:'skin',icon:'🧴',color:'#fce7f3',accent:'#e91e8c',dot:'#ff3d9a',img:'./img/chemical peels.jpg',name:'Chemical Peels',marathi:'केमिकल पील्स',badge:'Skin Brightening',desc:'Medical-grade exfoliation to reveal brighter, smoother skin by removing dead cells and stimulating cell renewal.',tags:['All Skin Types','30–60 min','Minimal Downtime']},
+  {cat:'laser',icon:'⚡',color:'#f3e8ff',accent:'#9d4edd',dot:'#c77dff',img:'./img/laser hair reduction.jpg',name:'Laser Hair Reduction',marathi:'लेझर हेअर रिडक्शन',badge:'Laser Precision',desc:'Long-lasting hair reduction using advanced laser technology. Safe for face, underarms, legs, bikini and all body areas.',tags:['Face & Body','Multiple Sessions','Permanent Results']},
+  {cat:'skin',icon:'💧',color:'#e0f7fa',accent:'#0097a7',dot:'#26c6da',img:'./img/hydra facial.jpg',name:'HydraFacial',marathi:'हायड्राफेशियल',badge:'Instant Glow',desc:'Multi-step facial that cleanses, exfoliates, extracts and hydrates simultaneously for instantly glowing, refreshed skin.',tags:['All Skin Types','45 min','Zero Downtime']},
+  {cat:'skin',icon:'🌟',color:'#fef3c7',accent:'#c17f24',dot:'#f5a623',img:'./img/pigmentation.jpg',name:'Pigmentation Treatment',marathi:'पिग्मेंटेशन उपचार',badge:'Even Tone',desc:'Targeted protocols combining lasers and peels to reduce dark spots, melasma and uneven skin tone — revealing luminous, clear skin.',tags:['Melasma','Dark Spots','Sun Damage']},
+  {cat:'therapy',icon:'💉',color:'#ffe4e6',accent:'#e11d48',dot:'#fb7185',img:'./img/PRP treatment.jpg',name:'PRP & GFC Therapy',marathi:'PRP आणि GFC थेरपी',badge:'Bio-Rejuvenation',desc:'Harness your own growth factors for powerful hair restoration and skin rejuvenation through platelet-rich plasma technology.',tags:['Hair Regrowth','Skin Rejuvenation','Natural Growth Factors']},
+  {cat:'hair',icon:'🌿',color:'#dcfce7',accent:'#16a34a',dot:'#4ade80',img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop',name:'Dandruff Treatment',marathi:'डँड्रफ उपचार',badge:'Scalp Health',desc:'Comprehensive scalp analysis and customised treatment targeting the root cause of dandruff, flaking and scalp inflammation.',tags:['Scalp Analysis','Root Cause','Long-lasting Relief']},
+  {cat:'laser',icon:'🔴',color:'#fce7f3',accent:'#dc2626',dot:'#f87171',img:'./img/tattoo remove.jpg',name:'Tattoo Removal',marathi:'टॅटू रिमूव्हल',badge:'Laser Safe',desc:'Safe, effective laser tattoo removal with minimal scarring. Any colour, any size — treated with precision over multiple sessions.',tags:['All Ink Colours','Multiple Sessions','Safe & Effective']},
+  {cat:'skin',icon:'✨',color:'#fdf2f8',accent:'#e91e8c',dot:'#ff6eb4',img:'./img/anti aging 1.jpg',name:'Anti-Aging',marathi:'एंटी-एजिंग',badge:'Youth Restore',desc:'Comprehensive anti-aging programs combining fillers, laser and skin boosters to restore youthful vitality, volume and radiance.',tags:['Fillers','Laser','Skin Boosters']},
+  {cat:'ayurveda',icon:'🌊',color:'#e0f2fe',accent:'#0284c7',dot:'#38bdf8',img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&auto=format&fit=crop',name:'Shirodhara',marathi:'शिरोधारा',badge:'Deep Relaxation',desc:'Continuous warm medicated oil poured on the forehead — deeply calms the nervous system, relieves chronic stress and insomnia.',tags:['Stress Relief','Insomnia','Anxiety']},
+  {cat:'ayurveda',icon:'👁️',color:'#fef9c3',accent:'#ca8a04',dot:'#facc15',img:'./img/taparpam.jpg',name:'Tarpanam',marathi:'तर्पणम',badge:'Eye Therapy',desc:'Medicated ghee retained around the eyes — nourishes optic nerves, reduces screen-induced dryness and strengthens eyesight naturally.',tags:['Eye Dryness','Screen Fatigue','Vision Health']},
+  {cat:'antiaging',icon:'✨',color:'#fce7f3',accent:'#db2777',dot:'#f472b6',img:'./img/wrinkle treatment.jpg',name:'Wrinkle Reduction',marathi:'सुरकुत्या कमी करणे',badge:'Age Reversal',desc:'Medical-grade treatments to visibly smooth fine lines and deep wrinkles, restoring youthful contours, volume and skin firmness.',tags:['Fine Lines','Deep Wrinkles','Volume Restore']},
+  {cat:'antiaging',icon:'💎',color:'#f3e8ff',accent:'#9333ea',dot:'#c084fc',img:'./img/colision induction.jpg',name:'Collagen Induction',marathi:'कोलेजन उत्पादन वाढवणे',badge:'Skin Renewal',desc:"Stimulate skin's own collagen through micro-needling, PRP and laser. Long-lasting plumpness and firmness with zero surgery.",tags:['Micro-needling','PRP Boost','Long-lasting']},
+  {cat:'antiaging',icon:'🌸',color:'#fff1f2',accent:'#e11d48',dot:'#fb7185',img:'./img/skin tightning (2).jpg',name:'Skin Tightening',marathi:'त्वचेला घट्ट करणे',badge:'Lift & Firm',desc:'Non-invasive firming treatments using HIFU and RF technology to restore elasticity and lift sagging skin — zero downtime.',tags:['HIFU','RF Technology','Non-Surgical']},
+];
+const CATS=[{k:'all',l:'All Treatments'},{k:'skin',l:'✦ Skin Care'},{k:'hair',l:'✦ Hair Care'},{k:'laser',l:'✦ Laser'},{k:'therapy',l:'✦ Therapies'},{k:'ayurveda',l:'✦ Ayurveda'},{k:'antiaging',l:'✦ Anti-Aging'}];
+function buildTabs(){
+  const el=document.getElementById('catTabs');
+  el.innerHTML=CATS.map(c=>`<button class="cat-tab${c.k==='all'?' active':''}" data-k="${c.k}">${c.l}</button>`).join('');
+  el.querySelectorAll('.cat-tab').forEach(b=>{b.addEventListener('click',()=>{el.querySelectorAll('.cat-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.k);});});
+}
+function render(f='all'){
+  const list=f==='all'?T:T.filter(t=>t.cat===f);
+  document.getElementById('tGrid').innerHTML=list.map(t=>`
+    <div class="t-card">
+      <div class="t-img"><img src="${t.img}" alt="${t.name}" loading="lazy"><div class="t-img-grad"></div><span class="t-badge" style="color:${t.accent}">${t.badge}</span><span class="t-cat-dot" style="background:${t.dot}"></span></div>
+      <div class="t-body">
+        <div class="t-head"><div class="t-icon-box" style="background:${t.color}">${t.icon}</div><div class="t-name">${t.name}</div></div>
+        <div class="t-marathi" style="color:${t.accent}">${t.marathi}</div>
+        <p class="t-desc">${t.desc}</p>
+        <div class="t-tags">${t.tags.map(tag=>`<span class="t-tag">${tag}</span>`).join('')}</div>
+        <div class="t-footer"><a class="t-learn" href="tel:7972855142" style="color:${t.accent}">Book Now →</a><span class="t-stars">★★★★★</span></div>
+      </div>
+    </div>`).join('');
+}
+buildTabs();render();
+
+/* FAQ */
+const FAQS=[
+  {q:'How many sessions do I need for laser hair reduction?',a:'Most patients require 6–8 sessions spaced 4–6 weeks apart for optimal results. The exact number depends on your skin type, hair colour, hormonal factors and the area being treated. Dr. Saloni will give you a personalised estimate at consultation.'},
+  {q:'Are the treatments safe for Indian skin tones?',a:'Absolutely. Dr. Saloni has specific expertise in treating Fitzpatrick skin types III–V (typical Indian skin tones). All laser and chemical peel protocols are calibrated to be safe and effective for darker skin — minimising the risk of post-inflammatory hyperpigmentation.'},
+  {q:'What is the difference between PRP and GFC therapy?',a:'PRP (Platelet-Rich Plasma) uses your own blood platelets to stimulate hair growth and skin rejuvenation. GFC (Growth Factor Concentrate) is a newer, more advanced version that concentrates a higher level of growth factors for improved and faster results. Dr. Saloni will recommend the right option based on your needs.'},
+  {q:'How does Nadi Parikshan (pulse diagnosis) work?',a:'Nadi Parikshan is an ancient Ayurvedic diagnostic technique where Dr. Saloni reads the subtle pulse at your wrist to understand the balance of your three Doshas (Vata, Pitta, Kapha). This guides the selection of the most appropriate Panchakarma and Ayurvedic treatments for your body constitution.'},
+  {q:'Is there any downtime after chemical peels?',a:'Superficial peels typically have no downtime — mild redness for 1–2 days. Medium-depth peels may cause peeling for 4–7 days. Dr. Saloni will recommend the appropriate peel depth based on your concern and lifestyle, ensuring treatment fits around your schedule.'},
+  {q:'Can I combine aesthetic treatments with Ayurvedic therapies?',a:"Yes, and this is actually one of Saharsh Clinic's specialties. Dr. Saloni designs integrated protocols that combine modern aesthetic treatments (lasers, PRP) with Ayurvedic therapies (Panchakarma, Shirodhara) for superior, holistic results — treating both the skin and its underlying constitution."},
+  {q:'How do I book an appointment?',a:'You can book by clicking any appointment or call button on this page, or by reaching out via Instagram (@saharsh_skin_hair_care) or Google Maps. The clinic is open Monday to Saturday, 10 AM – 7 PM, and Sunday by appointment.'},
+];
+document.getElementById('faqWrap').innerHTML=FAQS.map((f,i)=>`
+  <div class="faq-item" id="faq${i}">
+    <div class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="faq-icon">+</span></div>
+    <div class="faq-a"><p>${f.a}</p></div>
+  </div>`).join('');
+function toggleFaq(i){
+  const el=document.getElementById('faq'+i);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+
+/* SCROLL REVEAL */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08});
+function observe(){document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
+observe();
+new MutationObserver(observe).observe(document.getElementById('tGrid'),{childList:true});
+</script>
+</body>
+</html>
